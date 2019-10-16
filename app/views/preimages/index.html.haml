@@ -1,0 +1,19 @@
+%p#notice= notice
+%h1 Preimages
+%table
+  %thead
+    %tr
+      %th Content
+      %th Image
+      %th{:colspan => "3"}
+  %tbody
+    - @preimages.each do |preimage|
+      %tr
+        %td= preimage.content
+        %td= preimage.image
+        %td= link_to 'Show', preimage
+        %td= link_to 'Edit', edit_preimage_path(preimage)
+        %td= link_to 'Destroy', preimage, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+
+= link_to 'New Preimage', new_preimage_path
