@@ -10,10 +10,17 @@
   .field
     = f.label :content
     = f.text_area :content
-  .field
-    = f.label :image
-    = f.file_field :image, id: 'post_img'
-    %br
-    = image_tag "https://demo.a-blogcms.jp/media/001/201902/1c35033abff55e4664a216314d599201.png", id: 'img_prev'
-    %br
+    - if @preimage.image.blank?
+      .field
+        = f.label :image
+        = f.file_field :image, id: 'post_img'
+        %br
+        = image_tag "https://demo.a-blogcms.jp/media/001/201902/1c35033abff55e4664a216314d599201.png", id: 'img_prev'
+        %br
+    - else
+      .field
+        = f.label :image
+        = f.file_field :image, id: 'post_img'
+        %br
+        = image_tag @preimage.image.url, id: 'img_prev'
     = f.submit 'Send'
