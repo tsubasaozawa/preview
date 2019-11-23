@@ -7,10 +7,10 @@
       %ul
         - preimage.errors.full_messages.each do |message|
           %li= message
-
-  = form_for [@preimage] do |f|
+  .field
     = f.label :content
     = f.text_area :content
+  .field
     = f.label :image
     = f.file_field :image, id: 'post_img'
     %br

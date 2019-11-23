@@ -10,10 +10,10 @@
     - @preimages.each do |preimage|
       %tr
         %td= preimage.content
-        %td= preimage.image
+        %td= image_tag(preimage.image.url)
         %td= link_to 'Show', preimage
         %td= link_to 'Edit', edit_preimage_path(preimage)
         %td= link_to 'Destroy', preimage, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
+%br
 
 = link_to 'New Preimage', new_preimage_path
