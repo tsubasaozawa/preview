@@ -1,4 +1,4 @@
-= form_with(model: preimage, local: true) do |form|
+= form_with(model: preimage, local: true) do |f|
   - if preimage.errors.any?
     #error_explanation
       %h2
@@ -7,24 +7,13 @@
       %ul
         - preimage.errors.full_messages.each do |message|
           %li= message
-  .field
-    = form.label :content
-    = form.text_area :content
-  .field
-    = form.label :image
-    = form.text_area :image
-  .actions
-    = form.submit
 
-.form
   = form_for [@preimage] do |f|
-    .input-box
-      = f.text_field :content, class: 'input-box__text', placeholder: 'type a post'
-      = f.label :image, class: 'input-box__image' do
-        = f.file_field :image, class: 'input-box__image__file',id: 'post_img'
-        - if @preimage.image.present?
-          = image_tag @preimage.image, id: :img_prev
-        - else
-          = image_tag "https://demo.a-blogcms.jp/media/001/201902/1c35033abff55e4664a216314d599201.png", id: :img_prev
-
-    = f.submit 'Send', class: 'submit-btn'
+    = f.label :content
+    = f.text_area :content
+    = f.label :image
+    = f.file_field :image, id: 'post_img'
+    %br
+    = image_tag "https://demo.a-blogcms.jp/media/001/201902/1c35033abff55e4664a216314d599201.png", id: 'img_prev'
+    %br
+    = f.submit 'Send'

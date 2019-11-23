@@ -4,7 +4,7 @@
   = @preimage.content
 %p
   %strong Image:
-  = @preimage.image
+  = image_tag(@preimage.image.url)
 = link_to 'Edit', edit_preimage_path(@preimage)
 |
 = link_to 'Back', preimages_path
